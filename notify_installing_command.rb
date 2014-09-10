@@ -11,4 +11,4 @@ def notify message
   notifier.notify message
 end
 
-notify "#{%x(echo $USER).chomp} has just executed `#{ARGV[0]}` at `#{ARGV[1]}`"
+notify "*#{%x(echo $USER).chomp}* has just executed `#{ARGV[0]}` at `#{ARGV[1]}`"
