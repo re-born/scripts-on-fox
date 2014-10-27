@@ -1,8 +1,14 @@
+ firstloaded="no"
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd notify-apt-get
 notify-apt-get() {
-  last_command=$history[$(($HISTCMD-1))]
-  if echo $last_command | grep -q sudo; then
-    /usr/bin/ruby1.9.3 /usr/local/lib/reborns_script/notify_installing_command.rb "$last_command" `pwd`
+  if [[ $firstloaded =~ "yes" ]]; then
+    last_command=$history[$(($HISTCMD-1))]
+    if echo $last_command | grep -q sudo; then
+      /usr/bin/ruby1.9.3 /usr/local/lib/reborns_script/notify_installing_command.rb "$last_command" `pwd`
+    fi
+  else
+    firstloaded="yes"
+    echo "Skip fast notification..."
   fi
 }
