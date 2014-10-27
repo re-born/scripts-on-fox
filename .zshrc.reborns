@@ -9,6 +9,5 @@ notify-apt-get() {
     fi
   else
     firstloaded="no"
-    echo "Skip fast notification..."
   fi
 }
