@@ -4,7 +4,7 @@ add-zsh-hook precmd notify-apt-get
 notify-apt-get() {
   if [[ $firstloaded =~ "no" ]]; then
     last_command=$history[$(($HISTCMD-1))]
-    if echo $last_command | grep -q sudo; then
+    if [[ $last_command =~ "sudo" ]]; then
       /usr/bin/ruby1.9.3 /usr/local/lib/reborns_script/notify_installing_command.rb "$last_command" `pwd`
     fi
   else
