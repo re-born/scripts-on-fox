@@ -6,8 +6,8 @@ def notify message
   notifier = SlackNotify::Client.new ENV['SLACK_TEAM'],
                                      ENV['SLACK_TOKEN'],
                                      { channel: ENV['SLACK_CHANNEL'], 
-                                       username: 'fox @ Ubuntu',
-                                       icon_url: 'http://l0o0l.co/material/sakai_lab/fox.png'}
+                                       username: ENV['SLACK_BOT_NAME'],
+                                       icon_url: ENV['SLACK_ICON_URL']}
   notifier.notify message
 end
 
